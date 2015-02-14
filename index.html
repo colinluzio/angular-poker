@@ -1,0 +1,36 @@
+<html lang='en' ng-app='app'>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script src="controllers.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<body ng-controller="MainController">
+    <div id="wrapper">
+        <div id="top-wrapper">
+            {{firstPlayer}}
+            <div ng-repeat="item in firstPlayer">
+                <div class="playingCard">
+                    <span class="cardSuit">{{item.suit}}</span>
+                    <h2>{{item.value}}</h2>
+                </div>
+            </div>
+        </div>
+        <div id="mid-wrapper">{{initialCards}}
+            <a href="#" ng-click="dealCards()">Start game</a>
+           
+            <div>
+                {{newPlayer}}
+                 <a href="#" ng-click="changeCards()">Change cards</a>
+            </div>
+        </div>
+        <div id="bottom-wrapper">
+            {{secondPlayer}}
+            <div ng-repeat="item in secondPlayer">
+                <div class="playingCard">
+                    <span class="cardSuit">{{item.suit}}</span>
+                    <h2>{{item.value}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
