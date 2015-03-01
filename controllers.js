@@ -6,7 +6,6 @@ myApp.controller('MainController', ['$scope', function($scope) {
   $scope.fourthPlayer =[];
   $scope.fifthPlayer =[];
   $scope.sixthPlayer =[];
-  
   $scope.testArray = [{suit:'D',value:10},{suit:'H',value:9},{suit:'H',value:12},
                       {suit:'D',value:7},{suit:'D',value:6},{suit:'H',value:8},
                       {suit:'H',value:10}];
@@ -34,20 +33,39 @@ $scope.dealCards = function(){
             $scope.initialCards.splice(index,1);
         }  
     }
-    $scope.isPair($scope.testArray);
-    console.log($scope.firstPlayer);
     //$scope.firstPlayer.sort($scope.compare);
     //$scope.isFlush($scope.testArray);
 //    if($scope.isStraight($scope.testArray)){
 //        console.log($scope.isStraight($scope.testArray));
 //    }
 };
-//$scope.changeCards = function(){
-//    var newcards = $scope.firstPlayer;
-//    var lateCards = newcards.$new();
-//    //newcards[0].value = 3
-//    console.log(lateCards);
-//}
+$scope.flopCards = function(){
+    for (var x=0;x<3;x++){
+         var index = Math.floor((Math.random() * ($scope.initialCards.length -1)));
+         for(var i=0; i< players.length; i++){
+             players[i].push($scope.initialCards[index]);
+         }
+         $scope.initialCards.splice(index,1);
+    }
+}
+$scope.turnCards = function(){
+    
+         var index = Math.floor((Math.random() * ($scope.initialCards.length -1)));
+         for(var i=0; i< players.length; i++){
+             players[i].push($scope.initialCards[index]);
+         }
+         $scope.initialCards.splice(index,1);
+ 
+}
+$scope.riverCards = function(){
+    
+         var index = Math.floor((Math.random() * ($scope.initialCards.length -1)));
+         for(var i=0; i< players.length; i++){
+             players[i].push($scope.initialCards[index]);
+         }
+         $scope.getWinner();
+ 
+}
 $scope.compare=function(a,b) {
   if (a.value < b.value)
      return -1;
@@ -146,4 +164,3 @@ $scope.isPair = function(objects){
     console.log(hands);
 }
 }]);
-
